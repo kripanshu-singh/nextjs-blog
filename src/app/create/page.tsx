@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { Editor } from "@tiptap/react";
 import Tiptap from "@/my_utils/Tiptap";
 
-const page = () => {
+const Page = () => {
     const router = useRouter();
 
     const tags = [
@@ -264,4 +264,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

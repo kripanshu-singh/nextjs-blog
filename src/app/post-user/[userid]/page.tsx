@@ -100,7 +100,7 @@ const page = () => {
             {!contextLoading && (
                 <>
                     <div className="flex mx-auto px-5 md:px-11 py-4 flex-wrap justify-around gap-y-5  md:gap-y-10 ">
-                        {searchByName(searchVal, posts).map((post:any) => {
+                        {searchByName(searchVal, posts).map((post: any) => {
                             const url = post?.thumbnail;
 
                             return (
@@ -155,4 +155,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

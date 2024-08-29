@@ -6,7 +6,7 @@ import { useUser } from "@/userContext";
 import { useParams, useRouter } from "next/navigation";
 import Tiptap from "@/my_utils/Tiptap";
 
-const page = () => {
+const Page = () => {
     interface Post {
         _id: string;
         thumbnail: string;
@@ -265,4 +265,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;
