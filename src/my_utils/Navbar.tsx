@@ -5,7 +5,6 @@ import { PlaceholdersAndVanishInputDemo } from "./Search";
 import { useUser } from "@/userContext";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { HoverBorderGradientDemo } from "./RegisterButton";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 const Navbar = () => {

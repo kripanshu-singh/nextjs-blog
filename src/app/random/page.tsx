@@ -1,7 +1,7 @@
 import RandBlog from "@/my_utils/RandomBlog";
 import React from "react";
 
-const page = () => {
+const Page = () => {
     return (
         <div>
             <RandBlog />
