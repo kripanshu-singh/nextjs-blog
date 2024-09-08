@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/userContext";
@@ -35,6 +35,7 @@ const Page = () => {
     const onSubmitHandler = async (e: React.FormEvent) => {
         e.preventDefault();
         setContextLoading(true);
+        console.log(`\n ~ Page ~ contextLoading :- `, contextLoading);
         try {
             if (!avatar) {
                 return setToastError("Avatar is required");
@@ -54,13 +55,14 @@ const Page = () => {
             console.log("Response data:", response.data);
             if (response.data.error) {
                 setToastError(response.data.error);
+                setContextLoading(false);
             } else {
                 await handleNavigation();
+                setContextLoading(false);
                 setToastMessage("User Created Successfully");
             }
             setHideToast(false);
             setTimeout(() => setHideToast(true), 3000);
-            setContextLoading(false);
         } catch (error: any) {
             setContextLoading(false);
             console.error("Error:", error.message || error);
@@ -69,7 +71,11 @@ const Page = () => {
             setTimeout(() => setHideToast(true), 3000);
         }
     };
-    setContextLoading(false);
+    useEffect(() => {
+        setContextLoading(false);
+    }, []);
+
+    // setContextLoading(false);
 
     return (
         <div>

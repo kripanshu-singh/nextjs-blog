@@ -39,7 +39,7 @@ const Navbar = () => {
         } catch (error) {
             console.error("Error fetching user data:", error);
             // Handle error, e.g., setUser(null);
-            setContextLoading(false);
+            // setContextLoading(false);
         }
     };
 
@@ -54,10 +54,10 @@ const Navbar = () => {
                     response?.data?.user
                 );
                 setUser(response?.data?.user);
-                setContextLoading(false);
+                // setContextLoading(false);
             } catch (error) {
                 console.error("Error fetching user data:", error);
-                setContextLoading(false);
+                // setContextLoading(false);
                 // Handle error, e.g., setUser(null);
             }
         };

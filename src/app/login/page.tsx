@@ -23,21 +23,22 @@ const Page = () => {
 
     const onSubmitHandler = async (e: React.FormEvent) => {
         setContextLoading(true);
+        console.log(`\n ~ Page ~ contextLoading :- `, contextLoading);
         e.preventDefault();
         try {
-
             const response = await axios.post("/api/user/login", {
                 email,
                 password,
             });
-            setContextLoading(false);
 
             if (response.data.error) {
+                setContextLoading(false);
                 setToastError(response.data.error);
                 setToastMessage("");
             } else {
                 setUser(response.data.newUser);
                 await handleNavigation();
+                setContextLoading(false);
                 setToastMessage("User logged in Successfully");
             }
 
@@ -51,7 +52,7 @@ const Page = () => {
             setTimeout(() => setHideToast(true), 3000);
         }
     };
-    setContextLoading(false);
+    // setContextLoading(false);
 
     return (
         <div>
