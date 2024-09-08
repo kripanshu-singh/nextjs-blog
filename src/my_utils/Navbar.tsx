@@ -35,7 +35,7 @@ const Navbar = () => {
                 response?.data?.user
             );
             setUser(response?.data?.user);
-            setContextLoading(false);
+            // setContextLoading(false);
         } catch (error) {
             console.error("Error fetching user data:", error);
             setContextLoading(false);

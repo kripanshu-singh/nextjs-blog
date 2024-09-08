@@ -46,4 +46,5 @@ const userSchema: Schema<IUser> = new Schema(
     { timestamps: true }
 );
 
-export const User = models.User || model<IUser>("User", userSchema);
+// console.log(`\n ~ models.users :- `, models.users);
+export const User = models.users || model<IUser>("users", userSchema);
