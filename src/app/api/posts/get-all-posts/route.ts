@@ -1,27 +1,31 @@
 import { connect } from "@/DatabaseConnect/dbConnect";
-import { authentication, uploadOnCloudinary } from "@/helpers/helper";
-import { Post } from "@/models/Post";
-import { User } from "@/models/User";
 import { NextRequest, NextResponse } from "next/server";
+import { Post } from "@/models/Post";
 
-connect()
-    .then(() => console.log("DB Connect SIGNN UP"))
-    .catch((error: any) => console.log("Error Connecting to database", error));
-
+// Establish a database connection inside the GET handler
 export const GET = async (req: NextRequest) => {
-    const posts = await Post.find().sort({ updatedAt: -1 });
+    try {
+        await connect(); // Ensure DB connection
 
-    if (!posts)
+        // Fetch all posts and sort them by updatedAt in descending order
+        const posts = await Post.find().sort({ updatedAt: -1 });
+
+        if (!posts || posts.length === 0) {
+            return NextResponse.json(
+                { message: "No posts found" },
+                { status: 404 }
+            );
+        }
+
         return NextResponse.json(
-            {
-                message: "No post found",
-            },
-            { status: 400 }
+            { message: "Here are all posts", posts },
+            { status: 200 }
         );
-
-    //! if posts are there then send them
-    return NextResponse.json(
-        { message: "Here is all posts", posts },
-        { status: 200 }
-    );
+    } catch (error: any) {
+        console.error("Error fetching posts:", error);
+        return NextResponse.json(
+            { message: "Error fetching posts", error: error.message },
+            { status: 500 }
+        );
+    }
 };
