@@ -34,11 +34,11 @@ const Page = () => {
 
     const onSubmitHandler = async (e: React.FormEvent) => {
         e.preventDefault();
+        setContextLoading(true);
         try {
             if (!avatar) {
                 return setToastError("Avatar is required");
             }
-            setContextLoading(true);
             const formData = new FormData();
             formData.append("username", username);
             formData.append("email", email);

@@ -22,9 +22,9 @@ const Page = () => {
     // const [loading, setLoading] = useState<boolean>(contextLoading);
 
     const onSubmitHandler = async (e: React.FormEvent) => {
+        setContextLoading(true);
         e.preventDefault();
         try {
-            setContextLoading(true);
 
             const response = await axios.post("/api/user/login", {
                 email,

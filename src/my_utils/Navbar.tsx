@@ -35,11 +35,11 @@ const Navbar = () => {
                 response?.data?.user
             );
             setUser(response?.data?.user);
-            // setContextLoading(false);
+            setContextLoading(false);
         } catch (error) {
             console.error("Error fetching user data:", error);
-            setContextLoading(false);
             // Handle error, e.g., setUser(null);
+            setContextLoading(false);
         }
     };
 
@@ -173,7 +173,7 @@ const Navbar = () => {
                                         >
                                             <div className="card-body">
                                                 <span className="text-lg font-bold">
-                                                    8 Posts
+                                                    {user.posts} Posts
                                                 </span>
                                                 <div className="card-actions">
                                                     <Link
